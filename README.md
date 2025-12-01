@@ -1,73 +1,268 @@
-# Welcome to your Lovable project
+# Psi Finance - Sistema de Gerenciamento Financeiro
 
-## Project info
+## Descrição
 
-**URL**: https://lovable.dev/projects/79180b57-56f7-4202-b6d9-c86ae297300d
+Psi Finance é uma aplicação web completa para gerenciamento financeiro pessoal e empresarial. A plataforma oferece ferramentas intuitivas para controle de receitas, despesas, categorização de transações e relatórios analíticos para auxiliar na tomada de decisões financeiras.
 
-## How can I edit this code?
+## Tecnologias Utilizadas
 
-There are several ways of editing your application.
+### Backend
+- **Node.js** - Ambiente de execução JavaScript server-side
+- **Express.js** - Framework web para Node.js
+- **TypeScript** - Superset JavaScript com tipagem estática
+- **Prisma ORM** - ORM para banco de dados com type-safety
+- **PostgreSQL** - Banco de dados relacional
+- **JWT** - Autenticação via JSON Web Tokens
+- **Bcrypt** - Criptografia de senhas
+- **Zod** - Validação de schemas e dados
+- **Cors** - Middleware para habilitar CORS
 
-**Use Lovable**
+### Frontend
+- **React.js** - Biblioteca para construção de interfaces
+- **TypeScript** - Tipagem estática para JavaScript
+- **Vite** - Build tool e dev server rápido
+- **React Router DOM** - Roteamento para aplicação SPA
+- **Axios** - Cliente HTTP para requisições à API
+- **React Hook Form** - Gerenciamento de formulários
+- **Zod** - Validação integrada com React Hook Form
+- **Context API** - Gerenciamento de estado global
+- **Tailwind CSS** - Framework CSS utilitário
+- **React Icons** - Biblioteca de ícones
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/79180b57-56f7-4202-b6d9-c86ae297300d) and start prompting.
+### Desenvolvimento e Qualidade
+- **ESLint** - Linter para padronização de código
+- **Prettier** - Formatador de código automático
+- **Git** - Controle de versão
 
-Changes made via Lovable will be committed automatically to this repo.
+## Funcionalidades
 
-**Use your preferred IDE**
+### Autenticação e Segurança
+- Registro e login de usuários
+- Autenticação JWT com refresh tokens
+- Proteção de rotas
+- Criptografia de senhas
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Gerenciamento Financeiro
+- Cadastro de transações (receitas e despesas)
+- Categorização de transações
+- Filtros por data, categoria e tipo
+- Dashboard com métricas financeiras
+- Gráficos e visualizações de dados
+- Histórico completo de transações
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Recursos Avançados
+- Relatórios personalizados
+- Exportação de dados
+- Metas financeiras
+- Orçamento mensal
+- Notificações e lembretes
 
-Follow these steps:
+## Pré-requisitos
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js (v18 ou superior)
+- PostgreSQL (v12 ou superior)
+- npm ou yarn
+- Git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Instalação e Configuração
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 1. Clonar o Repositório
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+git clone https://github.com/GabrielSantiago-estudo/psi-finance-complete.git
+cd psi-finance-complete
 ```
 
-**Edit a file directly in GitHub**
+### 2. Configurar Ambiente
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+#### Backend
+```bash
+cd backend
+cp .env.example .env
+```
 
-**Use GitHub Codespaces**
+Edite o arquivo `.env` com suas configurações:
+```env
+DATABASE_URL="postgresql://usuario:senha@localhost:5432/psi_finance"
+JWT_SECRET="sua_chave_secreta_jwt_aqui"
+PORT=3001
+NODE_ENV="development"
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+#### Frontend
+```bash
+cd ../frontend
+cp .env.example .env
+```
 
-## What technologies are used for this project?
+Edite o arquivo `.env`:
+```env
+VITE_API_URL=http://localhost:3001
+VITE_APP_NAME=Psi Finance
+```
 
-This project is built with:
+### 3. Instalar Dependências
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+#### Backend
+```bash
+cd backend
+npm install
+# ou
+yarn install
+```
 
-## How can I deploy this project?
+#### Frontend
+```bash
+cd frontend
+npm install
+# ou
+yarn install
+```
 
-Simply open [Lovable](https://lovable.dev/projects/79180b57-56f7-4202-b6d9-c86ae297300d) and click on Share -> Publish.
+### 4. Configurar Banco de Dados
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+# Navegue até a pasta backend
+cd backend
 
-Yes, you can!
+# Criar o banco de dados (certifique-se que o PostgreSQL está rodando)
+npx prisma db push
+# ou
+yarn prisma db push
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+# Opcional: Popular com dados iniciais
+npx prisma db seed
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### 5. Executar a Aplicação
+
+#### Opção A: Separadamente
+
+**Terminal 1 - Backend:**
+```bash
+cd backend
+npm run dev
+# ou
+yarn dev
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm run dev
+# ou
+yarn dev
+```
+
+#### Opção B: Usando Scripts Combinados
+
+Execute na raiz do projeto (se disponível):
+```bash
+npm run start:dev
+# ou
+yarn start:dev
+```
+
+### 6. Acessar a Aplicação
+
+- Frontend: http://localhost:5173 (ou porta configurada)
+- Backend API: http://localhost:3001
+- Prisma Studio (visualização do banco): http://localhost:5555
+
+## Scripts Disponíveis
+
+### Backend
+```bash
+npm run dev          # Inicia servidor em modo desenvolvimento
+npm run build        # Compila TypeScript
+npm start           # Inicia servidor em produção
+npm run lint        # Executa ESLint
+npm run lint:fix    # Corrige problemas de lint
+npx prisma studio   # Abre interface do Prisma Studio
+```
+
+### Frontend
+```bash
+npm run dev          # Inicia servidor de desenvolvimento
+npm run build        # Cria build de produção
+npm run preview      # Visualiza build de produção localmente
+npm run lint        # Executa ESLint
+npm run lint:fix    # Corrige problemas de lint
+```
+
+## Estrutura do Projeto
+
+```
+psi-finance-complete/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/   # Controladores da API
+│   │   ├── middleware/    # Middlewares (auth, validation)
+│   │   ├── models/        # Modelos de dados
+│   │   ├── routes/        # Definição de rotas
+│   │   ├── services/      # Lógica de negócio
+│   │   ├── utils/         # Funções utilitárias
+│   │   └── app.ts         # Configuração do Express
+│   ├── prisma/
+│   │   └── schema.prisma  # Schema do banco de dados
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/    # Componentes React
+│   │   ├── contexts/      # Contextos (autenticação, tema)
+│   │   ├── hooks/         # Custom hooks
+│   │   ├── pages/         # Páginas da aplicação
+│   │   ├── services/      # Serviços API
+│   │   ├── styles/        # Estilos globais
+│   │   ├── types/         # Tipos TypeScript
+│   │   ├── utils/         # Funções utilitárias
+│   │   └── App.tsx        # Componente principal
+│   └── package.json
+└── README.md
+```
+
+## API Endpoints Principais
+
+### Autenticação
+- `POST /api/auth/register` - Registrar novo usuário
+- `POST /api/auth/login` - Login de usuário
+- `POST /api/auth/refresh` - Refresh token
+- `POST /api/auth/logout` - Logout
+
+### Transações
+- `GET /api/transactions` - Listar transações
+- `GET /api/transactions/:id` - Obter transação específica
+- `POST /api/transactions` - Criar transação
+- `PUT /api/transactions/:id` - Atualizar transação
+- `DELETE /api/transactions/:id` - Excluir transação
+
+### Categorias
+- `GET /api/categories` - Listar categorias
+- `POST /api/categories` - Criar categoria
+
+### Dashboard
+- `GET /api/dashboard/summary` - Resumo financeiro
+- `GET /api/dashboard/charts` - Dados para gráficos
+
+## Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## Suporte
+
+Para suporte, abra uma issue no repositório ou entre em contato através das informações do perfil do mantenedor.
+
+## Status do Projeto
+
+🚧 Em desenvolvimento ativo. Novas funcionalidades serão adicionadas regularmente.
+
+---
+Desenvolvido por [Gabriel Santiago](https://github.com/GabrielSantiago-estudo)
